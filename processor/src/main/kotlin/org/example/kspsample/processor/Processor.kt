@@ -28,6 +28,11 @@ class Processor(
         }
         output = codeGenerator.createNewFile(Dependencies(false), "", "SampleOutput", "txt")
         emit("SampleProcessor: init($options)", "")
+
+        val files = resolver.getAllFiles()
+        val fileInfo = files.map { "${it.packageName.asString()}, ${it.fileName}, ${it.filePath}" }.joinToString("\n")
+        emit("files: $fileInfo", "")
+
         invoked = true
         return emptyList()
     }
