@@ -1,4 +1,14 @@
 package org.example.kspsample.consumer
 
-class Test {
+import org.example.kspsample.schema.ModelObjectSchema
+
+fun main() {
+    println("Model objects:")
+    ModelObjectSchema.schema.map { (name, properties) ->
+        println("\t$name = {")
+        properties.map { (propertyName, type) ->
+            println("\t\t$propertyName: $type ")
+        }
+        println("\t}")
+    }
 }
